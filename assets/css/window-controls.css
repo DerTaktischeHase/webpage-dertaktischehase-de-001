@@ -1,0 +1,40 @@
+.window-controls{
+    display: flex;
+    margin-left: auto;
+    gap: 2px;
+    height: 100%;
+}
+
+.wc-btn{
+    -webkit-app-region: no-drag;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--wc-fg);
+    width: 46px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color .12s ease, color .12s ease, opacity .12s ease;
+}
+
+.wc-btn svg{ display:block; }
+
+.wc-btn:hover{ background: var(--wc-bg-hover); }
+.wc-btn:active{ background: var(--wc-bg-active); }
+
+.wc-close:hover{ background: var(--wc-close-hover); color: white; }
+.wc-close:active{ background: var(--wc-close-active); color: white; }
+
+.wc-btn:focus-visible{
+    outline: 2px solid #6aa0ff;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Icon-Umschaltung */
+.wc-max .icon-restore{ display: none; }
+.wc-max[data-state="restored"] .icon-max{ display: none; }
+.wc-max[data-state="restored"] .icon-restore{ display: inline; }

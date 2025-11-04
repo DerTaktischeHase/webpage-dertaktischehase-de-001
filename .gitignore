@@ -1,0 +1,25 @@
+# JetBrains
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Node/Frontend Build
+node_modules/
+dist/
+build/
+.cache/
+.tmp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env-Dateien (Konfiguration außerhalb des Repos)
+.env
+.env.*.local
+!.env.example

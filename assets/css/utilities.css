@@ -1,0 +1,17 @@
+/* Minimieren: nur den Hauptinhalt einklappen */
+main.minimized { display: none; }
+
+/* Header optisch „inaktiv“, wenn minimized */
+.app-menubar.minimized { opacity: .9; }
+
+#theme-toggle {
+    appearance: none;
+    border: 1px solid color-mix(in srgb, var(--border), transparent 40%);
+    background: var(--bg-alt);
+    color: var(--text);
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+#theme-toggle:hover { background: color-mix(in srgb, var(--bg-alt), var(--text) 4%); }

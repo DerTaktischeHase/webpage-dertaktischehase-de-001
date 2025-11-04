@@ -1,0 +1,25 @@
+.app-menubar a[role="menuitem"],
+.app-menubar .menu-trigger {
+    position: relative;
+}
+
+/* Tooltip */
+.app-menubar a[role="menuitem"]:hover::after,
+.app-menubar .menu-trigger:hover::after {
+    content: attr(aria-label);
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 6px);
+    transform: translateX(-50%);
+    background: var(--bg-alt);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    opacity: 1;
+}

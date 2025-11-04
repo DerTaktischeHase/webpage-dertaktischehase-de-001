@@ -1,0 +1,43 @@
+/* ==== View-Dropdown ==== */
+.menu-root{ position: relative; }
+
+/* Dropdown-Panel */
+.menu-dropdown{
+    position: absolute;
+    top: calc(var(--mb-height) - 2px);
+    left: 0;
+    min-width: 180px;
+
+    background: var(--mb-bg);
+    color: var(--mb-text);
+    border: 1px solid var(--mb-border);
+    box-shadow: var(--mb-shadow);
+    border-radius: var(--mb-radius);
+    padding: 4px 0;
+
+    display: none;
+    z-index: 1000;
+}
+
+/* sichtbar, wenn geöffnet */
+.menu-root.open .menu-dropdown{ display: block; }
+
+/* Ein Menüeintrag im Dropdown */
+.menu-item{
+    width: 100%;
+    padding: 6px 16px;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    color: var(--mb-text);
+    font-size: 14px;
+    cursor: pointer;
+
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    white-space: nowrap;
+}
+.menu-item:hover{ background: var(--mb-bg-hover); }
+.menu-item:active{ background: color-mix(in srgb, var(--mb-bg-hover), black 5%); }
+.menu-item[aria-pressed="true"]{ font-weight: 600; }

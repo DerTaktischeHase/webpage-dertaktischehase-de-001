@@ -1,0 +1,152 @@
+/* ===========================
+   TOKENS (theme-unabhängig)
+   =========================== */
+:root {
+    /* Grey scale */
+    --gray-0: #ffffff;
+    --gray-50: #f7f7f8;
+    --gray-100: #ececef;
+    --gray-200: #dcdcde;
+    --gray-300: #c4c4c6;
+    --gray-400: #e8e8ea;
+    --gray-450: #dcdcdf;
+    --gray-500: #cfcfd4;
+    --gray-550: #bdbdc4;
+    --gray-600: #a4a4ac;
+    --gray-650: #8f8f98;
+    --gray-700: #77777f;
+    --gray-725: #6c6c74;
+    --gray-750: #616168;
+    --gray-775: #55555c;
+    --gray-800: #484850;
+    --gray-825: #3c3c44;
+    --gray-850: #303038;
+    --gray-875: #24242c;
+    --gray-900: #17171f;
+
+    /* Accent palette (konstant) */
+    --accent-pink:   #ff6faa;
+    --accent-purple: #b07bff;
+    --accent-blue:   #4fa8ff;
+    --accent-cyan:   #42e3d9;
+    --accent-mint:   #6ff0a7;
+    --accent-green:  #61d461;
+    --accent-yellow: #ffea63;
+    --accent-orange: #ffb66f;
+    --accent-red:    #ff7a78;
+
+    /* Default Accent (konstant) */
+    --accent:        var(--accent-purple);
+    --accent-hover:  #c591ff;
+    --accent-active: #9a64f0;
+
+    /* Radii / Shadows (konstant) */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+
+    /* Cards (konstant) */
+    --radius: 14px;
+    --shadow-sm-2: 0 2px 10px rgba(0,0,0,.06);
+    --shadow-md-2: 0 8px 24px rgba(0,0,0,.08);
+
+    /* Menubar Konstanten (Abmessungen/Typo) */
+    --mb-height: 34px;
+    --mb-pad-x: 12px;
+    --mb-radius: 6px;
+    --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+}
+
+/* ===========================
+   THEME: LIGHT
+   =========================== */
+:root[data-theme="light"] {
+    /* App-Flächen */
+    --bg: #f7f7f8;
+    --bg-alt: #ececef;
+    --text: #17171f;
+    --text-dim: #6c6c74;
+    --border: #dcdcde;
+
+    /* Menubar Farben/Shadow */
+    --mb-bg: #f6f6f7;
+    --mb-bg-hover: #e9e9ec;
+    --mb-text: #1e1f22;
+    --mb-text-dim: #5d5f64;
+    --mb-border: #d8d9de;
+    --mb-focus: #6aa0ff;
+    --mb-shadow: 0 1px 0 rgba(0,0,0,.02), 0 2px 8px rgba(0,0,0,.04);
+
+    /* Window controls */
+    --wc-fg: #1f2328;
+    --wc-bg-hover: #e6e8ee;
+    --wc-bg-active: #d7d9e0;
+    --wc-close-hover: #e81123;
+    --wc-close-active: #c50f1f;
+}
+
+/* ===========================
+   THEME: DARK
+   =========================== */
+:root[data-theme="dark"] {
+    /* App-Flächen */
+    --bg: #17171f;
+    --bg-alt: #2e2e2f;
+    --text: #f7f7f8;
+    --text-dim: #9d9da0;
+    --border: #4a4a4c;
+
+    /* Menubar Farben/Shadow */
+    --mb-bg: #1f2023;
+    --mb-bg-hover: #2a2c30;
+    --mb-text: #f3f4f6;
+    --mb-text-dim: #b6b8bd;
+    --mb-border: #2d2f33;
+    --mb-focus: #7fb3ff;
+    --mb-shadow: 0 1px 0 rgba(255,255,255,.02), 0 2px 10px rgba(0,0,0,.35);
+
+    /* Window controls */
+    --wc-fg: #e7e9ee;
+    --wc-bg-hover: #2a2d33;
+    --wc-bg-active: #24272c;
+    --wc-close-hover: #e81123;
+    --wc-close-active: #c50f1f;
+}
+
+/* ===========================
+   SYSTEM-FALLBACK
+   (greift nur, wenn KEIN data-theme vorhanden ist)
+   =========================== */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --bg: #17171f;
+        --bg-alt: #2e2e2f;
+        --text: #f7f7f8;
+        --text-dim: #9d9da0;
+        --border: #4a4a4c;
+
+        --mb-bg: #1f2023;
+        --mb-bg-hover: #2a2c30;
+        --mb-text: #f3f4f6;
+        --mb-text-dim: #b6b8bd;
+        --mb-border: #2d2f33;
+        --mb-focus: #7fb3ff;
+        --mb-shadow: 0 1px 0 rgba(255,255,255,.02), 0 2px 10px rgba(0,0,0,.35);
+
+        --wc-fg: #e7e9ee;
+        --wc-bg-hover: #2a2d33;
+        --wc-bg-active: #24272c;
+        --wc-close-hover: #e81123;
+        --wc-close-active: #c50f1f;
+    }
+}
+
+/* Sanfte Übergänge beim Theme-Wechsel (opt-in via Klasse) */
+:root.theme-transition * {
+    transition: background-color .2s linear,
+    color .2s linear,
+    border-color .2s linear,
+    box-shadow .2s linear;
+}

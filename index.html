@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <title>DerTaktischeHase.de</title>
+
+    <!--    dark/light theme    -->
+    <meta name="color-scheme" content="light dark">
+
+    <script type="module" src="assets/js/setDefaultTheme.js"></script>
+
+    <!-- Styles in sinnvoller Reihenfolge laden -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/menubar.css">
+    <link rel="stylesheet" href="assets/css/window-controls.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link rel="stylesheet" href="assets/css/nav-view-dropdown.css">
+    <link rel="stylesheet" href="assets/css/show-aria-attribute.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+
+</head>
+<body>
+<!-- Header: Windows-ähnliche Menüleiste -->
+<header class="app-menubar" role="menubar" aria-label="Application menu">
+    <nav>
+        <a role="menuitem" href="#" accesskey="f" aria-label="File (Alt+F)">
+            <span class="mn">F</span>ile
+        </a>
+        <a role="menuitem" href="#" accesskey="e" aria-label="Edit (Alt+E)">
+            <span class="mn">E</span>dit
+        </a>
+
+        <!-- ⬇️ Neu: View als Dropdown-Root -->
+        <div class="menu-root">
+            <button class="menu-trigger" role="menuitem" accesskey="v" aria-haspopup="true" aria-expanded="false" aria-label="View (Alt+V)">
+                <span class="mn">V</span>iew
+            </button>
+
+            <div class="menu-dropdown" role="menu" aria-label="View menu">
+                <!-- dein bestehender Theme-Toggle als Menüpunkt -->
+                <button id="theme-toggle" class="menu-item" aria-label="Farbschema umschalten" aria-pressed="false">
+                    <span class="icon-sun" aria-hidden="true">☀️</span>
+                    <span class="icon-moon" aria-hidden="true" style="display:none;">🌙</span>
+                    <span>Toggle Theme</span>
+                </button>
+                <!-- Weitere Menüeinträge möglich … -->
+                <!-- <button class="menu-item">Zoom In</button> -->
+            </div>
+        </div>
+        <!-- ⬆️ Ende: View -->
+
+        <a role="menuitem" href="#" accesskey="n" aria-label="Navigate (Alt+N)">
+            <span class="mn">N</span>avigate
+        </a>
+        <a role="menuitem" href="#" accesskey="w" aria-label="Window (Alt+W)">
+            <span class="mn">W</span>indow
+        </a>
+        <a role="menuitem" href="#" accesskey="h" aria-label="Help (Alt+H)">
+            <span class="mn">H</span>elp
+        </a>
+    </nav>
+
+
+    <!-- Window controls (top-right) -->
+    <div class="window-controls" role="group" aria-label="Fenstersteuerung">
+        <button class="wc-btn wc-min" aria-label="Minimieren">
+            <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                <rect x="2" y="6" width="8" height="0.9" rx=".5"
+                      stroke="currentColor" stroke-width="0.9" fill="none" />
+            </svg>
+        </button>
+
+        <button class="wc-btn wc-max" aria-label="Maximieren/ Wiederherstellen" id="wc-max">
+            <!-- Maximieren -->
+            <svg class="icon-max" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                <rect x="2.5" y="2.5" width="7" height="7"
+                      fill="none" stroke="currentColor" stroke-width="0.9" />
+            </svg>
+            <!-- Wiederherstellen (überlappende Fenster) -->
+            <svg class="icon-restore" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                <path d="M3.5 4h5v4.5h-5z" fill="none" stroke="currentColor" stroke-width="0.9" />
+                <path d="M4.5 3.5h4v3" fill="none" stroke="currentColor" stroke-width="0.9" />
+            </svg>
+        </button>
+
+        <button class="wc-btn wc-close" aria-label="Schließen">
+            <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true">
+                <path d="M3 3l6 6M9 3L3 9"
+                      stroke="currentColor" stroke-width="0.9" stroke-linecap="round" />
+            </svg>
+        </button>
+    </div>
+</header>
+
+<main>
+    <h1><a href="">DerTaktischeHase.de</a></h1>
+
+    <section class="cards-grid" aria-label="Feature grid">
+<!--         12 Cards  TODO: siehe unter mir-->
+<!--         kein Text markierbar, die ganze box soll klickbar sein-->
+<!--        und wenn man drauf geht plopt die Box auf. Sie wird in großformat-->
+<!--        gezeigt jenachdem wie groß der Bildschirm ist.-->
+<!--        Zudem will ich noch dass der Inhalt der Boxen irgendwann zu einem "..." wird und erst wenn man die box öffnet-->
+<!--        sieht man den ganzen text-->
+        <article class="card"><h3 class="card-title">Box 1</h3><p>Kurzer Beschreibungstext für diese Box. Alles responsive.</p></article>
+        <article class="card"><h3 class="card-title">Box 2</h3><p>Unterstützt längere Inhalte und bricht sauber um.</p></article>
+        <article class="card"><h3 class="card-title">Box 3</h3><p>Eleganter Schatten, dezente Border, Pastell-Akzent.</p></article>
+        <article class="card"><h3 class="card-title">Box 4</h3><p>Auto-Layout: Spaltenanzahl passt sich automatisch an.</p></article>
+        <article class="card"><h3 class="card-title">Box 5</h3><p>Keine Media Queries notwendig für die Spalten.</p></article>
+        <article class="card"><h3 class="card-title">Box 6</h3><p>Perfekt für Feature-Listen, Blog-Previews u.v.m.</p></article>
+        <article class="card"><h3 class="card-title">Box 7</h3><p>Hover hebt die Karte leicht an.</p></article>
+        <article class="card"><h3 class="card-title">Box 8</h3><p>Typografie skaliert dezent mit <code>clamp()</code>.</p></article>
+        <article class="card"><h3 class="card-title">Box 9</h3><p>Graue UI, bunte Akzentlinie am Titel.</p></article>
+        <article class="card"><h3 class="card-title">Box 10</h3><p>Barrierearm: klare Kontraste & Fokus-Stile.</p></article>
+        <article class="card"><h3 class="card-title">Box 11</h3><p>Skaliert bis auf Mobil 1 Spalte, Tablet 2–3 Spalten.</p></article>
+        <article class="card"><h3 class="card-title">Box 12</h3><p>Einfach weitere Cards hinzufügen – Layout bleibt stabil.</p></article>
+    </section>
+</main>
+
+<footer></footer>
+
+<!-- JS-Entry: setzt Events für Minimieren/Vollbild/Schließen -->
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

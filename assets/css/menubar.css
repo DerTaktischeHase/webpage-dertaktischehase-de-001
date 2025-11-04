@@ -1,0 +1,137 @@
+/* ==== Menubar (Windows-like) ==== */
+header { box-sizing: border-box; }
+
+/* Fallbacks, falls Tokens fehlen */
+:root{
+    --mb-height: 34px;
+    --mb-pad-x: 12px;
+    --mb-radius: 6px;
+}
+
+/* Leiste */
+.app-menubar{
+    position: sticky; top: 0; z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: var(--mb-height);
+    padding: 0 6px;
+
+    background: var(--mb-bg);
+    color: var(--mb-text);
+    border-bottom: 1px solid var(--mb-border);
+    box-shadow: var(--mb-shadow);
+
+    font: 500 14px/1 var(--font);
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+}
+
+/* Container für Tabs */
+.app-menubar nav{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 100%;
+    padding: 0 8px;
+}
+
+/* Ein Tab (A oder Button) */
+.app-menubar a[role="menuitem"],
+.app-menubar .menu-trigger{
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+
+    height: calc(var(--mb-height) - 8px);
+    padding: 0 var(--mb-pad-x);
+
+    color: var(--mb-text);
+    text-decoration: none;
+    border-radius: var(--mb-radius);
+    border: 1px solid transparent;
+    letter-spacing: .1px;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
+
+    /* Fix gegen hässliche Umbrüche wie "V iew" */
+    white-space: nowrap;
+}
+
+/* Hover/Active */
+.app-menubar a[role="menuitem"]:hover,
+.app-menubar .menu-trigger:hover{
+    background: var(--mb-bg-hover);
+}
+
+.app-menubar a[role="menuitem"]:active,
+.app-menubar .menu-trigger:active{
+    background: color-mix(in srgb, var(--mb-bg-hover), black 5%);
+    border-color: color-mix(in srgb, var(--mb-border), transparent 40%);
+}
+
+/* Tastaturfokus */
+.app-menubar a[role="menuitem"]:focus-visible,
+.app-menubar .menu-trigger:focus-visible{
+    outline: 0;
+    border-color: var(--mb-focus);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--mb-focus) 35%, transparent);
+}
+
+/* Mnemonic-Unterstreichung ohne Layout-Verschub */
+.app-menubar .mn{
+    margin-right: -4px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: from-font;
+    color: inherit;
+}
+
+/* Window-Controls rechts */
+.window-controls{
+    display: flex;
+    gap: 2px;
+    height: 100%;
+    margin-left: auto;
+}
+
+.wc-btn{
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--wc-fg);
+    width: 46px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color .12s ease, color .12s ease, opacity .12s ease;
+}
+.wc-btn svg{ display:block; }
+
+.wc-btn:hover{ background: var(--wc-bg-hover); }
+.wc-btn:active{ background: var(--wc-bg-active); }
+
+.wc-close:hover{ background: var(--wc-close-hover); color: white; }
+.wc-close:active{ background: var(--wc-close-active); color: white; }
+
+.wc-btn:focus-visible{
+    outline: 2px solid var(--mb-focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Icon-Umschaltung Max/Restore */
+.wc-max .icon-restore{ display: none; }
+.wc-max[data-state="restored"] .icon-max{ display: none; }
+.wc-max[data-state="restored"] .icon-restore{ display: inline; }
+
+/* Mobile: etwas kompakter */
+@media (max-width: 640px){
+    :root{ --mb-pad-x: 10px; --mb-height: 36px; }
+    .app-menubar nav{ padding: 0 4px; }
+}

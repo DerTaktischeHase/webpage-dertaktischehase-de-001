@@ -1,0 +1,41 @@
+/* sag dem Browser, dass beide Themes existieren (Scrollbars, Form-Controls) */
+:root { color-scheme: light dark; }
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--bg-alt);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+main {
+    background: var(--bg);
+    text-align: center;
+    padding-top: 32px;
+    min-height: 100vh;
+}
+
+h1 { margin: 0; }
+
+a {
+    text-decoration: none;
+    color: var(--accent);
+    font-weight: 500;
+    transition: color .2s, text-decoration-color .2s, opacity .2s;
+}
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+a:active { color: var(--accent-active); }
+a:visited { opacity: 0.85; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+::selection {
+    background: color-mix(in srgb, var(--accent), transparent 75%);
+    color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+}
