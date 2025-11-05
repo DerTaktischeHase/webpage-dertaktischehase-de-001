@@ -17,9 +17,9 @@
 }
 
 .card:hover{
-    transform: translateY(-2px);
+    transform: translateY(-6px);
     box-shadow: var(--shadow-md-2);
-    border-color: color-mix(in srgb, var(--border), var(--accent) 25%);
+    outline: solid 3px color-mix(in srgb, var(--border), var(--accent) 100%);
 }
 
 .card-title{
