@@ -203,3 +203,32 @@
 .btn.danger { border-color: color-mix(in srgb, #ff4d4f, transparent 60%); }
 .btn.danger:hover { background: color-mix(in srgb, #ff4d4f, transparent 90%); }
 .btn.subtle { opacity: .85; }
+
+
+/* Grid-Kinder dürfen nicht größer werden als die Spalte */
+.todo-list > li,
+.todo-card {
+    min-width: 0;                 /* <— entscheidend in Grids! */
+}
+
+/* Titel: eine Zeile + Ellipsis */
+.todo-title {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;       /* … am Zeilenende */
+    max-width: 100%;
+}
+
+/* Snippet: multi-line clamp bleibt, aber lange Wörter dürfen brechen */
+.todo-snippet {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;       /* bricht Monsterwörter, verhindert Überlauf */
+}
+
+.todo-card { padding: 14px 16px; }          /* hast du schon */
+.todo-card:focus-visible { outline-offset: 4px; }
