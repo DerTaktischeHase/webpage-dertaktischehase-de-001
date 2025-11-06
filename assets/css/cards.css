@@ -17,7 +17,7 @@
 }
 
 .card:hover{
-    transform: translateY(-6px);
+    transform: translateY(-2px) scale(1.01);
     box-shadow: var(--shadow-md-2);
     outline: solid 3px color-mix(in srgb, var(--border), var(--accent) 100%);
 }

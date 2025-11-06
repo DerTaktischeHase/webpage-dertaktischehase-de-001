@@ -1,0 +1,205 @@
+.todo {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+    color: var(--text);
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.todo-header h2 {
+    margin: 0;
+    font-size: clamp(1.1rem, 0.9rem + 1vw, 1.6rem);
+}
+
+.todo-add {
+    appearance: none;
+    border: 1px solid color-mix(in srgb, var(--border), transparent 35%);
+    background: var(--bg-alt);
+    color: var(--text);
+    border-radius: 999px;
+    height: 34px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+.todo-add:hover { background: color-mix(in srgb, var(--bg-alt), var(--text) 4%); }
+.todo-add:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* —— Karten —— */
+.todo-card {
+    width: 100%;
+    text-align: left;
+
+    /* Layout/Look */
+    background: var(--bg-alt);
+    border: 1px solid color-mix(in srgb, var(--border), transparent 30%);
+    border-radius: 14px; /* oder var(--radius) */
+    padding: 14px 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06); /* verschiebt nichts */
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background-color .18s ease;
+
+    /* Interaktion */
+    cursor: pointer;
+    user-select: none; /* ⬅️ Text NICHT markierbar */
+
+    /* Erbt Font von Body */
+    font: inherit;
+    color: inherit;
+}
+
+.todo-card:hover {
+    transform: translateY(-2px) scale(1.01); /* „ploppt“ leicht */
+    box-shadow: var(--shadow-md-2);
+    outline: solid 3px color-mix(in srgb, var(--border), var(--accent) 100%);
+}
+
+.todo-card:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent), transparent 40%);
+    outline-offset: 3px;
+}
+
+/* Titel + Anriss (mit Ellipsis/Clamp) */
+.todo-title {
+    margin: 0 0 6px 0;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+    color: var(--text);
+}
+
+.todo-snippet {
+    margin: 0;
+    color: var(--text-dim);
+    line-height: 1.55;
+
+    /* Zeilen begrenzen + Ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;     /* ⬅️ Anzahl Zeilen in der Liste */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* —— Modal/Dialog —— */
+.todo-dialog {
+    /* Seitenfüllender Overlay-Layer */
+    width: 100%;
+    max-width: none;
+    border: 0;
+    padding: 0;
+
+    /* Hintergrund: leicht abgedunkelt */
+    background: color-mix(in srgb, var(--bg), black 30%);
+}
+
+/* der „Frame“ im Dialog */
+.todo-dialog-frame {
+    width: min(900px, 92vw);
+    max-height: min(85vh, 1000px);
+    margin: 8vh auto;          /* vertikal mittig */
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--border), transparent 15%);
+    box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    padding: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+}
+
+.todo-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 12px 14px;
+    border-bottom: 1px solid color-mix(in srgb, var(--border), transparent 20%);
+    background: var(--bg-alt);
+}
+
+.todo-dialog-header h3 {
+    margin: 0;
+    font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.4rem);
+}
+
+.todo-dialog-close {
+    appearance: none;
+    border: 1px solid color-mix(in srgb, var(--border), transparent 35%);
+    background: var(--bg);
+    color: var(--text);
+    border-radius: 10px;
+    height: 32px;
+    width: 36px;
+    cursor: pointer;
+}
+.todo-dialog-close:hover {
+    background: color-mix(in srgb, var(--bg), var(--text) 3%);
+}
+.todo-dialog-close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.todo-dialog-content {
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.6;
+}
+
+.todo-dialog::backdrop {
+    background: rgba(0,0,0,.35); /* Safari/Chrome Backdrop */
+}
+
+/* Mobile Tweaks */
+@media (max-width: 520px) {
+    .todo-dialog-frame { margin: 4vh auto; width: 94vw; max-height: 92vh; }
+}
+
+
+/* Formularfelder im Dialog */
+.field { display: grid; gap: 6px; margin-bottom: 12px; }
+.field > span { color: var(--text-dim); font-size: .9rem; }
+.field input, .field textarea {
+    width: 100%;
+    background: var(--bg-alt);
+    color: var(--text);
+    border: 1px solid color-mix(in srgb, var(--border), transparent 20%);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font: inherit;
+}
+.field input:focus-visible, .field textarea:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+/* Dialog-Buttons */
+.dialog-actions { display: flex; gap: 8px; margin-left: auto; }
+.btn {
+    appearance: none; border: 1px solid color-mix(in srgb, var(--border), transparent 35%);
+    background: var(--bg); color: var(--text);
+    border-radius: 10px; height: 32px; padding: 0 12px; cursor: pointer; font: inherit;
+}
+.btn:hover { background: color-mix(in srgb, var(--bg), var(--text) 3%); }
+.btn.primary { border-color: color-mix(in srgb, var(--accent), transparent 40%); }
+.btn.primary:hover { background: color-mix(in srgb, var(--accent), transparent 90%); }
+.btn.danger { border-color: color-mix(in srgb, #ff4d4f, transparent 60%); }
+.btn.danger:hover { background: color-mix(in srgb, #ff4d4f, transparent 90%); }
+.btn.subtle { opacity: .85; }

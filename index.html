@@ -11,6 +11,7 @@
 
     <!-- Styles in sinnvoller Reihenfolge laden -->
     <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/todo.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/menubar.css">
     <link rel="stylesheet" href="assets/css/window-controls.css">
@@ -22,7 +23,7 @@
 </head>
 <body>
 <!-- Header: Windows-ähnliche Menüleiste -->
-<header class="app-menubar" role="menubar" aria-label="Application menu">
+<header class="app-menubar" role="banner" aria-label="Application menu">
     <nav>
         <a role="menuitem" href="#" accesskey="f" aria-label="File (Alt+F)">
             <span class="mn">F</span>ile
@@ -116,6 +117,78 @@
         <article class="card"><h3 class="card-title">Box 11</h3><p>Skaliert bis auf Mobil 1 Spalte, Tablet 2–3 Spalten.</p></article>
         <article class="card"><h3 class="card-title">Box 12</h3><p>Einfach weitere Cards hinzufügen – Layout bleibt stabil.</p></article>
     </section>
+
+    <section class="todo" aria-labelledby="todo-title">
+        <header class="todo-header">
+            <h2 id="todo-title">Meine To-Dos</h2>
+            <button class="todo-add" type="button" aria-label="Neues To-Do hinzufügen">＋</button>
+        </header>
+
+        <ul class="todo-list" role="list">
+            <!-- Jede Karte ist voll klickbar und nicht markierbar -->
+            <li>
+                <button class="todo-card" type="button"
+                        data-title="Einkaufen"
+                        data-content="Milch, Eier, Reis, Frühlingszwiebeln, Sojasauce. Nicht vergessen, die Induktions-Wok-Ringe zu checken.">
+                    <h3 class="todo-title">Einkaufen</h3>
+                    <p class="todo-snippet">
+                        Milch, Eier, Reis, Frühlingszwiebeln, Sojasauce. Nicht vergessen, die Induktions-Wok-Ringe zu checken.
+                    </p>
+                </button>
+            </li>
+
+            <li>
+                <button class="todo-card" type="button"
+                        data-title="Webseite: Menubar fixen"
+                        data-content="Menubar-Probleme: harte Farben entfernen, nur Tokens nutzen (mb-bg, mb-border, wc-fg). View-Dropdown per CSS/JS und Alt+V.">
+                    <h3 class="todo-title">Webseite: Menubar fixen</h3>
+                    <p class="todo-snippet">
+                        Menubar-Probleme: harte Farben entfernen, nur Tokens nutzen (mb-bg, mb-border, wc-fg). View-Dropdown per CSS/JS und Alt+V.
+                    </p>
+                </button>
+            </li>
+
+            <li>
+                <button class="todo-card" type="button"
+                        data-title="SSH Keys ordnen"
+                        data-content="RSA/ed25519 Schlüssel trennen: github_id_ed25519, lab_id_ed25519. ~/.ssh/config mit Host-Alias und IdentitiesOnly.">
+                    <h3 class="todo-title">SSH Keys ordnen</h3>
+                    <p class="todo-snippet">
+                        RSA/ed25519 Schlüssel trennen: github_id_ed25519, lab_id_ed25519. ~/.ssh/config mit Host-Alias und IdentitiesOnly.
+                    </p>
+                </button>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Native Modal für die „aufploppende“ große Ansicht -->
+    <dialog class="todo-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-content">
+        <form method="dialog" class="todo-dialog-frame" id="todo-form">
+            <header class="todo-dialog-header">
+                <h3 id="dialog-title">To-Do bearbeiten</h3>
+                <div class="dialog-actions">
+                    <button class="btn subtle" id="btn-cancel" value="cancel" type="button" aria-label="Abbrechen">Abbrechen</button>
+                    <button class="btn danger" id="btn-delete" type="button" aria-label="Löschen">Löschen</button>
+                    <button class="btn primary" id="btn-save" value="default" type="submit" aria-label="Speichern">Speichern</button>
+                </div>
+            </header>
+
+            <div class="todo-dialog-content">
+                <label class="field">
+                    <span>Titel</span>
+                    <input id="field-title" name="title" type="text" required maxlength="120" />
+                </label>
+
+                <label class="field">
+                    <span>Beschreibung</span>
+                    <textarea id="field-content" name="content" rows="8" spellcheck="true"></textarea>
+                </label>
+            </div>
+        </form>
+    </dialog>
+
+
+    <script type="module" src="assets/js/todo.js"></script>
 </main>
 
 <footer></footer>
